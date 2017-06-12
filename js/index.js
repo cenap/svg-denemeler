@@ -3,10 +3,7 @@ if (SVG.supported) {
   var numberOfParticles = 50;
   var particles = [];
 
-  for (var i = 0; i < numberOfParticles; i++) {
-    var size = Math.random() * 25 + 10;
-    particles[i] = new Particle(Math.random() * vw, Math.random() * vh, size, size);
-  }
+  init();
 
   window.requestAnimFrame = (function() {
     return window.requestAnimationFrame ||
@@ -50,6 +47,19 @@ var display = document.getElementById('drawing');
 display.addEventListener('mousemove', onMousemove);
 display.addEventListener('click', onClick);
 
+function init() {
+  for (var i = 0; i < numberOfParticles; i++) {
+    var size = Math.random() * 25 + 10;
+    particles[i] = new Particle(Math.random() * vw, Math.random() * vh, size, size);
+  }
+}
+
+function reset() {
+    var ps = document.getElementById('ps');
+    numberOfParticles = ps.options[ps.selectedIndex].value;
+    draw.clear();
+    init();
+}
 
 function onClick(e) {
   explode(30);
