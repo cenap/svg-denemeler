@@ -27,5 +27,3 @@ pids
 
 # dotenv environment variables file
 .env
-
-!node_modules/svg.js/dist/*.js
